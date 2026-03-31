@@ -5,9 +5,10 @@ This repository is a sanitized, public-safe distillation of my Enterprise Infras
 It is intentionally structured to be readable by a recruiter in a few minutes and useful to a technical reviewer who wants to see how I think about service boundaries, validation, and operational support.
 
 ## Scope Clarification
-- Primary hands-on contribution: `Site 1`
-- Broader capstone context: integrated `Site 1 + Site 2`
-- Why Site 2 still appears here: it explains the MSP model, inter-site protection path, and recovery dependencies across the full project
+- Primary hands-on contribution: the simulated `private-cloud` side
+- Broader capstone context: a simulated `private-cloud` primary environment plus a simulated `public-cloud` secondary environment
+- Public naming note: the original course handover used numeric site labels, but this public repo describes the environments by architectural role to make the project easier to understand
+- Why the simulated `public-cloud` side still appears here: it explains the MSP model, inter-site protection path, and recovery dependencies across the full project
 
 For a direct scope summary, see [docs/project-scope.md](docs/project-scope.md).
 
@@ -16,6 +17,7 @@ For a direct scope summary, see [docs/project-scope.md](docs/project-scope.md).
 - A support-oriented view of systems administration, not just build steps
 - Clear documentation habits: architecture, runbooks, validation, and triage
 - Lightweight automation through a PowerShell health-report script
+- A public-safe archive strategy for a larger cross-site validation toolkit that originally exercised WinRM, SSH, HTTP/HTTPS, SMB, and backup-path checks before lab decommission
 - Public sharing discipline through sanitized examples and non-sensitive artifacts
 
 ## Environment Snapshot
@@ -77,13 +79,23 @@ flowchart LR
 ```
 
 ## Key Files
-- [docs/project-scope.md](docs/project-scope.md): explains Site 1 as the primary hands-on scope and Site 2 as integrated project context
+- [docs/project-scope.md](docs/project-scope.md): explains the simulated private-cloud side as the primary hands-on scope and the simulated public-cloud side as integrated project context
 - [docs/architecture.md](docs/architecture.md): high-level design notes, service planes, and the public-safe operating model
 - [docs/operations-runbook.md](docs/operations-runbook.md): support priorities, service dependencies, and maintenance cadence
 - [docs/triage-guide.md](docs/triage-guide.md): fast first checks for common failure symptoms
 - [docs/validation-checklist.md](docs/validation-checklist.md): daily, weekly, monthly, and post-change validation habits
+- [docs/validation-toolkit-archive.md](docs/validation-toolkit-archive.md): explains how the original live test toolkit is preserved as archived evidence after the lab closes on April 17, 2026
 - [config/sample-endpoints.json](config/sample-endpoints.json): categorized endpoint list for the health-report script
 - [scripts/backup-health-check.ps1](scripts/backup-health-check.ps1): generates a Markdown report from TCP and HTTP endpoint checks
+- [scripts/publish-validation-archive.ps1](scripts/publish-validation-archive.ps1): converts exported toolkit summaries into sanitized Markdown and JSON artifacts for GitHub and portfolio use
+
+## Validation Evidence After Lab Closure
+The original capstone lab is scheduled to close after April 17, 2026. Because of that, this public repo treats the live environment and the long-term showcase as two different things:
+
+- Before April 17, 2026: run the full validation toolkit, export the summary, and capture final screenshots or checklist evidence.
+- After April 17, 2026: publish the sanitized summary, archived screenshots, and operational notes as historical proof of what was validated while the environment was still online.
+
+That keeps the project honest. It shows the live operational work happened, but it does not pretend the lab is still available forever.
 
 ## Public Sharing Rules
 - No real credentials

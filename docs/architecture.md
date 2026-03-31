@@ -6,12 +6,13 @@ Present a public-safe version of a multi-tenant infrastructure story that is sti
 This repository is not meant to expose a full internal build. It is meant to show how I reason about service placement, administrative boundaries, storage and backup dependencies, and validation from an operator point of view.
 
 ## Public-Safe Source Basis
-This showcase is informed by a larger integrated handover package that combined private-cloud and public-cloud evidence into one operational narrative. The public version keeps the design logic and support mindset while removing secrets and environment-specific details.
+This showcase is informed by a larger integrated handover package that combined a simulated private-cloud environment and simulated public-cloud environment into one operational narrative. The public version keeps the design logic and support mindset while removing secrets and environment-specific details.
 
 ## Scope Clarification
-- Primary hands-on implementation focus: Site 1
-- Broader integrated capstone context: Site 1 plus Site 2
-- Reason Site 2 appears in the public narrative: it provides the MSP boundary, cross-site protection path, and recovery dependencies that make the overall design explainable
+- Primary hands-on implementation focus: the simulated private-cloud side
+- Broader integrated capstone context: a simulated private-cloud primary environment plus a simulated public-cloud secondary environment
+- Public naming note: original course materials used numeric site labels, but this public version describes the environments by role for clarity
+- Reason the simulated public-cloud side appears in the public narrative: it provides the MSP boundary, cross-site protection path, and recovery dependencies that make the overall design explainable
 
 ## Core Operating Assumptions
 - Tenant isolation is more important than any single VM or host.
