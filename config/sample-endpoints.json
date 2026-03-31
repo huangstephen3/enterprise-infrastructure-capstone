@@ -1,0 +1,28 @@
+{
+  "services": [
+    {
+      "name": "Grafana Dashboard",
+      "host": "grafana.lab.local",
+      "port": 3000,
+      "protocol": "tcp"
+    },
+    {
+      "name": "Windows Admin Center",
+      "host": "admin.lab.local",
+      "port": 6600,
+      "protocol": "tcp"
+    },
+    {
+      "name": "Cockpit",
+      "host": "linux-admin.lab.local",
+      "port": 9090,
+      "protocol": "tcp"
+    },
+    {
+      "name": "Backup Repository SMB",
+      "host": "backup.lab.local",
+      "port": 445,
+      "protocol": "tcp"
+    }
+  ]
+}
