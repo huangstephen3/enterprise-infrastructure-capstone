@@ -1,6 +1,6 @@
 # Enterprise Infrastructure Capstone Showcase
 
-Public-safe highlight of the original `Site 1` deliverables from my Enterprise Infrastructure Capstone. In the course handover, `Site 1` represented the simulated `private-cloud` primary environment. This repo distills that work into a recruiter-friendly architecture snapshot, evidence gallery, operations notes, and lightweight automation artifacts.
+Public-safe highlight of the original `Site 1` deliverables from my Enterprise Infrastructure Capstone. In the course handover, `Site 1` represented the simulated `private-cloud` primary environment, and I independently designed, implemented, and documented that portion of the project. This repo distills that work into a recruiter-friendly architecture snapshot, evidence gallery, operations notes, and lightweight automation artifacts.
 
 [Portfolio](https://huangstephen3.github.io/) | [Project Scope](docs/project-scope.md) | [LinkedIn](https://www.linkedin.com/in/yiqinhuang2025)
 
@@ -21,7 +21,7 @@ Public-safe highlight of the original `Site 1` deliverables from my Enterprise I
 
 ## What I Built on Site 1
 
-- Built and documented the simulated `private-cloud` primary environment around shared Proxmox compute, segmented tenant services, and bounded administrative paths.
+- Independently built and documented the simulated `private-cloud` primary environment around shared Proxmox compute, segmented tenant services, and bounded administrative paths.
 - Structured backup and offsite-copy workflows so recovery planning was part of the platform design, not an afterthought.
 - Produced monitoring and administration surfaces that made the environment supportable after handover.
 - Turned a large course handover into a public-safe project showcase that still demonstrates architecture, validation thinking, and operational support habits.
