@@ -1,109 +1,91 @@
 # Enterprise Infrastructure Capstone Showcase
 
-This repository is a sanitized, public-safe distillation of my Enterprise Infrastructure Capstone, including the infrastructure, operations, and handover logic behind the delivered environment.
+Public-safe highlight of the original `Site 1` deliverables from my Enterprise Infrastructure Capstone. In the course handover, `Site 1` represented the simulated `private-cloud` primary environment. This repo distills that work into a recruiter-friendly architecture snapshot, evidence gallery, operations notes, and lightweight automation artifacts.
 
-It is intentionally structured to be readable by a recruiter in a few minutes and useful to a technical reviewer who wants to see how I think about service boundaries, validation, and operational support.
+[Portfolio](https://huangstephen3.github.io/) | [Project Scope](docs/project-scope.md) | [LinkedIn](https://www.linkedin.com/in/yiqinhuang2025)
 
-## Scope Clarification
-- Primary hands-on contribution: the simulated `private-cloud` side
-- Broader capstone context: a simulated `private-cloud` primary environment plus a simulated `public-cloud` secondary environment
-- Public naming note: the original course handover used numeric site labels, but this public repo describes the environments by architectural role to make the project easier to understand
-- Why the simulated `public-cloud` side still appears here: it explains the MSP model, inter-site protection path, and recovery dependencies across the full project
+## Site 1 At a Glance
 
-For a direct scope summary, see [docs/project-scope.md](docs/project-scope.md).
+| Area | Details |
+| --- | --- |
+| Role | Simulated `private-cloud` primary environment with shared compute, tenant-separated services, bounded administrative access, and backup workflows |
+| Platform | OPNsense, Proxmox VE, Windows Server, Veeam, Grafana, Windows Admin Center, Cockpit |
+| Scale | `2` tenant stacks, `9` VLANs, `12` workloads, `10` protected systems, `7` offsite copy jobs |
+| Repo goal | Show the strongest parts of the project quickly, without making a reviewer read the entire handover document |
 
-## What This Repository Demonstrates
-- Multi-tenant infrastructure thinking instead of isolated single-service demos
-- A support-oriented view of systems administration, not just build steps
-- Clear documentation habits: architecture, runbooks, validation, and triage
-- Lightweight automation through a PowerShell health-report script
-- A public-safe archive strategy for a larger cross-site validation toolkit that originally exercised WinRM, SSH, HTTP/HTTPS, SMB, and backup-path checks before lab decommission
-- Public sharing discipline through sanitized examples and non-sensitive artifacts
+## Why This Version Exists
 
-## Environment Snapshot
-- `2` tenant service stacks with different platform preferences
-- `9` segmented VLANs and a bounded management path
-- `12` documented workloads across shared infrastructure
-- `10` local systems covered by documented backup scope
-- `7` offsite backup-copy jobs routed through a site-to-site protection path
-- Shared OPNsense, Proxmox VE, storage, monitoring, and Veeam workflows
+- The original project handover is much longer and mixes build steps, screenshots, and integrated cross-site context.
+- This public repo keeps the fastest high-signal material: architecture, contribution, operational priorities, evidence, and supporting automation.
+- The simulated `public-cloud` secondary environment still appears where it explains VPN, offsite-copy, and recovery flow, but the showcase emphasis stays on `Site 1`.
+
+## What I Built on Site 1
+
+- Built and documented the simulated `private-cloud` primary environment around shared Proxmox compute, segmented tenant services, and bounded administrative paths.
+- Structured backup and offsite-copy workflows so recovery planning was part of the platform design, not an afterthought.
+- Produced monitoring and administration surfaces that made the environment supportable after handover.
+- Turned a large course handover into a public-safe project showcase that still demonstrates architecture, validation thinking, and operational support habits.
+
+## Evidence Gallery
+
+Selected screenshots below were extracted from the full handover and trimmed for public-safe sharing. I chose the screenshots that explain `Site 1` fastest instead of uploading the full `.docx` as the main artifact.
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <img src="assets/site1-gallery/site1-architecture-overview.svg" alt="Site 1 architecture overview" width="100%" />
+      <strong>Architecture overview</strong><br />
+      Simplified view of the simulated private-cloud primary environment, including segmentation, shared compute, monitoring, and the inter-site protection path.
+    </td>
+    <td width="50%" valign="top">
+      <img src="assets/site1-gallery/site1-proxmox-summary.png" alt="Proxmox VE host summary" width="100%" />
+      <strong>Shared compute on Proxmox VE</strong><br />
+      Capacity and utilization snapshot used to document the virtualization layer that hosted the primary environment.
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <img src="assets/site1-gallery/site1-grafana-dashboard.png" alt="Grafana infrastructure dashboard" width="100%" />
+      <strong>Operational visibility</strong><br />
+      Grafana dashboard showing host health and workload monitoring for the Site 1 platform.
+    </td>
+    <td width="50%" valign="top">
+      <img src="assets/site1-gallery/site1-veeam-overview.png" alt="Veeam backup overview" width="100%" />
+      <strong>Backup and recovery readiness</strong><br />
+      Veeam job view used to document protected workloads and recovery-oriented operational checks.
+    </td>
+  </tr>
+</table>
 
 ## Operational Priorities
-These priorities come directly from the integrated handover logic that informed this public version:
 
 1. Preserve tenant boundaries first.
 2. Preserve approved administrative and MSP entry paths second.
-3. Treat storage and backup continuity as platform-level dependencies, not isolated service tasks.
+3. Treat storage and backup continuity as platform-level dependencies.
 
-## Technical Focus
-- OPNsense for segmentation, policy enforcement, remote-access thinking, and bounded exposure
-- Proxmox VE for shared compute and workload hosting
-- Windows Server and Samba AD concepts for tenant-separated identity, DNS, DHCP, and admin paths
-- Windows iSCSI, SMB-backed protection, and Veeam workflows for storage and recovery thinking
-- Grafana, InfluxDB, Windows Admin Center, and Cockpit for operational visibility and browser-based administration
-- PowerShell and documentation-backed automation for repeatable checks
+## Supporting Automation
 
-## Architecture Snapshot
-```mermaid
-flowchart LR
-  Internet["Internet / ISP"] --> FW["OPNsense Firewall"]
-  FW --> Mgmt["Management / Jump Path"]
-  FW --> C1["Company 1 Services"]
-  FW --> C2["Company 2 Services"]
-  FW --> SAN["Isolated SAN Transport"]
-  FW --> VPN["Inter-site Protection Path"]
-  C1 --> Proxmox["Shared Compute on Proxmox VE"]
-  C2 --> Proxmox
-  SAN --> Backup["Storage + Backup Workflows"]
-  Mgmt --> Admin["WAC / Cockpit / Admin Hosts"]
-  Proxmox --> Monitoring["Grafana + InfluxDB"]
-  Admin --> Scripts["Validation + PowerShell Reporting"]
-  Monitoring --> Scripts
-  Backup --> Scripts
-```
+These scripts are supporting artifacts. They show how I translated recurring checks and exported validation evidence into reviewer-friendly outputs, but they are not presented as a promise that the original lab will stay online forever.
 
-## Repository Layout
-```text
-.
-|-- assets/
-|-- config/
-|-- docs/
-|   |-- architecture.md
-|   |-- operations-runbook.md
-|   |-- triage-guide.md
-|   `-- validation-checklist.md
-|-- reports/
-|-- scripts/
-|-- .gitignore
-`-- README.md
-```
+- [scripts/backup-health-check.ps1](scripts/backup-health-check.ps1): reads a categorized endpoint list and generates a Markdown health report from TCP and HTTP checks.
+- [scripts/publish-validation-archive.ps1](scripts/publish-validation-archive.ps1): converts exported validation summaries into sanitized Markdown and JSON evidence for GitHub or portfolio use.
+- [config/sample-endpoints.json](config/sample-endpoints.json): public-safe sample inventory that drives the health-report script.
 
-## Key Files
-- [docs/project-scope.md](docs/project-scope.md): explains the simulated private-cloud side as the primary hands-on scope and the simulated public-cloud side as integrated project context
-- [docs/architecture.md](docs/architecture.md): high-level design notes, service planes, and the public-safe operating model
-- [docs/operations-runbook.md](docs/operations-runbook.md): support priorities, service dependencies, and maintenance cadence
-- [docs/triage-guide.md](docs/triage-guide.md): fast first checks for common failure symptoms
+## Reviewer Shortcuts
+
+- [docs/project-scope.md](docs/project-scope.md): maps the original course scope to the public-safe version of this repo
+- [docs/architecture.md](docs/architecture.md): service planes, infrastructure roles, and operating model
+- [docs/operations-runbook.md](docs/operations-runbook.md): maintenance rhythm and platform support priorities
+- [docs/triage-guide.md](docs/triage-guide.md): first checks for common infrastructure symptoms
 - [docs/validation-checklist.md](docs/validation-checklist.md): daily, weekly, monthly, and post-change validation habits
-- [docs/validation-toolkit-archive.md](docs/validation-toolkit-archive.md): explains how the original live test toolkit is preserved as archived evidence after the lab closes on April 17, 2026
-- [config/sample-endpoints.json](config/sample-endpoints.json): categorized endpoint list for the health-report script
-- [scripts/backup-health-check.ps1](scripts/backup-health-check.ps1): generates a Markdown report from TCP and HTTP endpoint checks
-- [scripts/publish-validation-archive.ps1](scripts/publish-validation-archive.ps1): converts exported toolkit summaries into sanitized Markdown and JSON artifacts for GitHub and portfolio use
+- [docs/validation-toolkit-archive.md](docs/validation-toolkit-archive.md): how the original live validation toolkit is preserved after the lab closes on April 17, 2026
 
-## Validation Evidence After Lab Closure
-The original capstone lab is scheduled to close after April 17, 2026. Because of that, this public repo treats the live environment and the long-term showcase as two different things:
+<details>
+<summary>Public sharing rules</summary>
 
-- Before April 17, 2026: run the full validation toolkit, export the summary, and capture final screenshots or checklist evidence.
-- After April 17, 2026: publish the sanitized summary, archived screenshots, and operational notes as historical proof of what was validated while the environment was still online.
-
-That keeps the project honest. It shows the live operational work happened, but it does not pretend the lab is still available forever.
-
-## Public Sharing Rules
 - No real credentials
 - No production secrets or VPN configuration
-- No sensitive internal hostnames, usernames, or private operational data
-- No screenshots that expose unsafe implementation details
-- Public examples should show design intent, evidence quality, and supportability
+- No unsafe internal implementation details
+- No screenshots chosen only because they are numerous; public examples should show design intent, evidence quality, and supportability
 
-## Related Links
-- Portfolio site: https://huangstephen3.github.io
-- LinkedIn: https://www.linkedin.com/in/yiqinhuang2025
+</details>
