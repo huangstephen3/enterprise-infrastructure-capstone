@@ -4,6 +4,13 @@ This repository is a sanitized, public-safe distillation of my Enterprise Infras
 
 It is intentionally structured to be readable by a recruiter in a few minutes and useful to a technical reviewer who wants to see how I think about service boundaries, validation, and operational support.
 
+## Scope Clarification
+- Primary hands-on contribution: `Site 1`
+- Broader capstone context: integrated `Site 1 + Site 2`
+- Why Site 2 still appears here: it explains the MSP model, inter-site protection path, and recovery dependencies across the full project
+
+For a direct scope summary, see [docs/project-scope.md](docs/project-scope.md).
+
 ## What This Repository Demonstrates
 - Multi-tenant infrastructure thinking instead of isolated single-service demos
 - A support-oriented view of systems administration, not just build steps
@@ -70,6 +77,7 @@ flowchart LR
 ```
 
 ## Key Files
+- [docs/project-scope.md](docs/project-scope.md): explains Site 1 as the primary hands-on scope and Site 2 as integrated project context
 - [docs/architecture.md](docs/architecture.md): high-level design notes, service planes, and the public-safe operating model
 - [docs/operations-runbook.md](docs/operations-runbook.md): support priorities, service dependencies, and maintenance cadence
 - [docs/triage-guide.md](docs/triage-guide.md): fast first checks for common failure symptoms

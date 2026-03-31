@@ -8,6 +8,11 @@ This repository is not meant to expose a full internal build. It is meant to sho
 ## Public-Safe Source Basis
 This showcase is informed by a larger integrated handover package that combined private-cloud and public-cloud evidence into one operational narrative. The public version keeps the design logic and support mindset while removing secrets and environment-specific details.
 
+## Scope Clarification
+- Primary hands-on implementation focus: Site 1
+- Broader integrated capstone context: Site 1 plus Site 2
+- Reason Site 2 appears in the public narrative: it provides the MSP boundary, cross-site protection path, and recovery dependencies that make the overall design explainable
+
 ## Core Operating Assumptions
 - Tenant isolation is more important than any single VM or host.
 - Approved management entry paths matter because healthy services are still hard to support when bastion access is broken.
