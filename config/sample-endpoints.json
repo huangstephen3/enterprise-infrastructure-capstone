@@ -1,28 +1,67 @@
 {
   "services": [
     {
+      "name": "OPNsense Management GUI",
+      "category": "entry-and-management",
+      "kind": "http",
+      "url": "https://firewall.lab.local/",
+      "expectedStatus": [200, 302, 401, 403],
+      "criticality": "high",
+      "notes": "Bounded administrative entry point"
+    },
+    {
+      "name": "Proxmox Management",
+      "category": "compute",
+      "kind": "tcp",
+      "host": "proxmox.lab.local",
+      "port": 8006,
+      "criticality": "high",
+      "notes": "Primary virtualization platform"
+    },
+    {
       "name": "Grafana Dashboard",
-      "host": "grafana.lab.local",
-      "port": 3000,
-      "protocol": "tcp"
+      "category": "monitoring",
+      "kind": "http",
+      "url": "http://grafana.lab.local:3000/login",
+      "expectedStatus": [200, 302],
+      "criticality": "medium",
+      "notes": "Operational visibility for infrastructure trends"
     },
     {
       "name": "Windows Admin Center",
+      "category": "entry-and-management",
+      "kind": "tcp",
       "host": "admin.lab.local",
       "port": 6600,
-      "protocol": "tcp"
+      "criticality": "medium",
+      "notes": "Windows infrastructure administration"
     },
     {
       "name": "Cockpit",
+      "category": "entry-and-management",
+      "kind": "tcp",
       "host": "linux-admin.lab.local",
       "port": 9090,
-      "protocol": "tcp"
+      "criticality": "medium",
+      "notes": "Linux browser-based administration"
     },
     {
       "name": "Backup Repository SMB",
+      "category": "backup-and-recovery",
+      "kind": "tcp",
       "host": "backup.lab.local",
       "port": 445,
-      "protocol": "tcp"
+      "criticality": "high",
+      "notes": "SMB target for backup or copy validation"
+    },
+    {
+      "name": "Site-to-Site Backup Target Reachability",
+      "category": "inter-site-protection",
+      "kind": "tcp",
+      "host": "site2-repo.lab.local",
+      "port": 445,
+      "criticality": "high",
+      "notes": "Representative offsite protection dependency"
     }
   ]
 }

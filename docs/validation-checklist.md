@@ -1,28 +1,41 @@
 # Validation Checklist
 
-Use this checklist when reviewing the home lab or preparing a recruiter-friendly update.
+Use this checklist to turn infrastructure work into repeatable operational evidence instead of one-time build notes.
 
-## Access and Segmentation
-- Confirm the firewall or router still reflects the intended segmentation model
-- Verify remote access is restricted to approved admin paths
-- Check that any public-facing demo content is intentionally exposed
+## Daily Checks
+- Confirm the approved jump or management path is reachable.
+- Review firewall interface state and any site-to-site tunnel health if inter-site protection matters.
+- Review Proxmox host health and confirm core workloads are up.
+- Confirm the latest local backup and offsite-copy jobs completed successfully.
+- Check Grafana for unusual CPU, memory, network, or I/O behavior.
 
-## Monitoring
-- Confirm Grafana dashboards load
-- Validate metrics collection is current
-- Review any alerts, stale panels, or missing data sources
+## Weekly Checks
+- Review free space on local and offsite repositories.
+- Confirm DNS and DHCP health for each tenant identity plane.
+- Reconfirm that representative clients can resolve the expected internal service names.
+- Check SAN-facing or storage-facing interfaces and mounted paths.
+- Verify browser-based admin tools still respond on their expected ports.
 
-## Backup and Recovery
-- Confirm the latest backup status is successful
-- Check repository capacity or destination reachability
-- Review recovery notes or restore-test evidence
+## Monthly Checks
+- Apply the approved patch cycle.
+- Export configuration backups where supported.
+- Review temporary firewall exceptions and remove stale entries.
+- Perform one representative restore or recovery validation.
 
-## Admin Tooling
-- Validate browser-based admin tools respond on expected ports
-- Confirm credentials and secrets are not embedded in public artifacts
-- Refresh documentation when services or topology change
+## After Any Major Change
+- Re-test administrative access paths.
+- Re-test authentication and name resolution.
+- Re-test VM or service state for the affected platform.
+- Re-test local backup success and offsite reachability where applicable.
+- Re-test monitoring visibility so alerts do not silently fail after change work.
+
+## Evidence to Capture
+- Dashboard screenshot or ticket note for daily checks
+- Ops checklist or change record for weekly checks
+- Restore evidence for monthly checks
+- Post-change validation note after any significant modification
 
 ## Public Portfolio Hygiene
-- Remove sensitive IPs, usernames, or hostnames before publishing
-- Replace internal screenshots with sanitized versions
-- Keep links current for GitHub, LinkedIn, and resume downloads
+- Remove sensitive IPs, usernames, internal paths, and credentials before publishing artifacts.
+- Prefer sanitized diagrams and written validation summaries over raw console output dumps.
+- Keep links current for GitHub, LinkedIn, portfolio, and downloadable resume files.
